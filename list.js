@@ -54,10 +54,41 @@ class LinkedList {
     };
 
     pop = () => {
+        let current = this.headNode
+        if(this.count === 1){
+            this.headNode = null
+        }
+        for(let i = 1; i < this.size() - 1; i++){
+            current = current.next
+        }
+        current.next = null
+        this.tailNode = current
+        this.count -= 1
     };
 
     contains = (val) => {
+        let current = this.headNode
+        while(current){
+            if(current.val === val){
+                return true
+            }
+            current = current.next
+        }
+        return false
     };
+
+    find = (val) => {
+        let current = this.headNode
+        let counter = 1
+        while(current){
+            if(current.val === val){
+                return counter
+            }
+            current = current.next
+            counter += 1
+        }
+        return null
+    }
 
     toString = () => {
         let string = '';
